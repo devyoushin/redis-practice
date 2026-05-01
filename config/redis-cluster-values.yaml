@@ -1,0 +1,130 @@
+# Bitnami Redis Cluster Helm values
+# Chart: bitnami/redis-cluster
+# Redis Version: 7.x
+# 환경: EKS, 네임스페이스: redis
+
+# ============================================================
+# 클러스터 구성
+# ============================================================
+cluster:
+  enabled: true
+  nodes: 6                          # 마스터 3 + Replica 3 (nodes = masters × (replicas + 1))
+  replicas: 1                       # 마스터당 Replica 수
+
+# ============================================================
+# 인증 설정
+# ============================================================
+auth:
+  enabled: true
+  password: ""                      # 빈 값 시 자동 생성 또는 existingSecret 사용
+  # existingSecret: redis-cluster-auth
+  # existingSecretPasswordKey: redis-password
+
+# ============================================================
+# Redis 설정
+# ============================================================
+redis:
+  config: |
+    maxmemory 400mb
+    maxmemory-policy allkeys-lru
+    maxmemory-samples 5
+    save ""                         # Cluster 모드에서 RDB 비활성화 (성능 최적화)
+    appendonly yes
+    appendfsync everysec
+    slowlog-log-slower-than 1000
+    slowlog-max-len 256
+    latency-monitor-threshold 50
+    latency-tracking yes
+    lazyfree-lazy-eviction yes
+    lazyfree-lazy-expire yes
+    tcp-keepalive 300
+
+  resources:
+    requests:
+      memory: 512Mi
+      cpu: "200m"
+    limits:
+      memory: 512Mi
+      cpu: "500m"
+
+# ============================================================
+# 영속성 설정
+# ============================================================
+persistence:
+  enabled: true
+  storageClass: gp3
+  size: 10Gi
+  accessModes:
+    - ReadWriteOnce
+
+# ============================================================
+# 서비스 설정
+# ============================================================
+service:
+  type: ClusterIP
+  ports:
+    redis: 6379
+
+# ============================================================
+# 보안 설정
+# ============================================================
+podSecurityContext:
+  enabled: true
+  runAsUser: 1001
+  fsGroup: 1001
+
+containerSecurityContext:
+  enabled: true
+  runAsNonRoot: true
+  readOnlyRootFilesystem: false
+  allowPrivilegeEscalation: false
+
+# ============================================================
+# 모니터링 설정 (Redis Exporter)
+# ============================================================
+metrics:
+  enabled: true
+  resources:
+    requests:
+      memory: 32Mi
+      cpu: "50m"
+    limits:
+      memory: 64Mi
+      cpu: "100m"
+  serviceMonitor:
+    enabled: true
+    namespace: monitoring
+    interval: 30s
+    scrapeTimeout: 10s
+    labels:
+      release: prometheus
+
+# ============================================================
+# 업데이트 전략
+# ============================================================
+updateStrategy:
+  type: RollingUpdate
+
+# ============================================================
+# Kubernetes 배포 설정
+# ============================================================
+topologySpreadConstraints:
+  - maxSkew: 1
+    topologyKey: kubernetes.io/hostname
+    whenUnsatisfiable: DoNotSchedule
+    labelSelector:
+      matchLabels:
+        app.kubernetes.io/name: redis-cluster
+
+# ============================================================
+# 배포 명령어
+# ============================================================
+# helm repo add bitnami https://charts.bitnami.com/bitnami
+# helm install redis bitnami/redis-cluster \
+#   -n redis \
+#   --create-namespace \
+#   -f redis-cluster-values.yaml \
+#   --set auth.password=$(openssl rand -base64 32)
+#
+# 업그레이드:
+# helm upgrade redis bitnami/redis-cluster -n redis -f redis-cluster-values.yaml

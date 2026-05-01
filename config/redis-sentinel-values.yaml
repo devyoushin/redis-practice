@@ -1,0 +1,177 @@
+# Bitnami Redis Helm values (Sentinel 모드)
+# Chart: bitnami/redis
+# Redis Version: 7.x
+# 환경: EKS, 네임스페이스: redis
+
+# ============================================================
+# 아키텍처 (Sentinel 고가용성 모드)
+# ============================================================
+architecture: replication           # replication = Sentinel 활성화
+
+# ============================================================
+# 인증 설정
+# ============================================================
+auth:
+  enabled: true
+  password: ""                      # 빈 값 시 자동 생성
+  # existingSecret: redis-auth
+  # existingSecretPasswordKey: redis-password
+
+# ============================================================
+# Sentinel 설정
+# ============================================================
+sentinel:
+  enabled: true
+  masterSet: mymaster               # Sentinel 마스터 이름
+  quorum: 2                         # Failover 결정 최소 Sentinel 수 (3개 Sentinel 시 2)
+  downAfterMilliseconds: 10000      # 10초 내 응답 없으면 다운 판정
+  failoverTimeout: 180000           # 3분 Failover 타임아웃
+  parallelSyncs: 1                  # Failover 후 동시 재동기화 Replica 수
+
+  resources:
+    requests:
+      memory: 64Mi
+      cpu: "50m"
+    limits:
+      memory: 128Mi
+      cpu: "100m"
+
+# ============================================================
+# 마스터 설정
+# ============================================================
+master:
+  replicaCount: 1
+
+  persistence:
+    enabled: true
+    storageClass: gp3
+    size: 10Gi
+    accessModes:
+      - ReadWriteOnce
+
+  resources:
+    requests:
+      memory: 512Mi
+      cpu: "200m"
+    limits:
+      memory: 512Mi
+      cpu: "500m"
+
+  config: |
+    maxmemory 400mb
+    maxmemory-policy allkeys-lru
+    maxmemory-samples 5
+    save 900 1
+    save 300 10
+    appendonly yes
+    appendfsync everysec
+    auto-aof-rewrite-percentage 100
+    auto-aof-rewrite-min-size 64mb
+    aof-use-rdb-preamble yes
+    slowlog-log-slower-than 1000
+    slowlog-max-len 256
+    latency-monitor-threshold 50
+    latency-tracking yes
+    lazyfree-lazy-eviction yes
+    lazyfree-lazy-expire yes
+    tcp-keepalive 300
+    rename-command FLUSHALL ""
+    rename-command FLUSHDB ""
+    rename-command DEBUG ""
+
+# ============================================================
+# Replica 설정
+# ============================================================
+replica:
+  replicaCount: 2                   # Replica 수 (Sentinel과 함께 최소 2 권장)
+
+  persistence:
+    enabled: true
+    storageClass: gp3
+    size: 10Gi
+
+  resources:
+    requests:
+      memory: 512Mi
+      cpu: "200m"
+    limits:
+      memory: 512Mi
+      cpu: "500m"
+
+# ============================================================
+# 서비스 설정
+# ============================================================
+service:
+  type: ClusterIP
+
+# 마스터 서비스 (쓰기용)
+# 접속 주소: redis-master.redis.svc.cluster.local:6379
+# Sentinel 주소: redis-node-0.redis.svc.cluster.local:26379
+
+# ============================================================
+# 보안 설정
+# ============================================================
+podSecurityContext:
+  enabled: true
+  runAsUser: 1001
+  fsGroup: 1001
+
+containerSecurityContext:
+  enabled: true
+  runAsNonRoot: true
+  allowPrivilegeEscalation: false
+
+# ============================================================
+# 모니터링 설정 (Redis Exporter)
+# ============================================================
+metrics:
+  enabled: true
+  resources:
+    requests:
+      memory: 32Mi
+      cpu: "50m"
+    limits:
+      memory: 64Mi
+      cpu: "100m"
+  serviceMonitor:
+    enabled: true
+    namespace: monitoring
+    interval: 30s
+    scrapeTimeout: 10s
+    labels:
+      release: prometheus
+
+# ============================================================
+# 업데이트 전략
+# ============================================================
+updateStrategy:
+  type: RollingUpdate
+
+# ============================================================
+# Pod 배포 분산 (노드별)
+# ============================================================
+topologySpreadConstraints:
+  - maxSkew: 1
+    topologyKey: kubernetes.io/hostname
+    whenUnsatisfiable: DoNotSchedule
+    labelSelector:
+      matchLabels:
+        app.kubernetes.io/name: redis
+
+# ============================================================
+# 배포 명령어
+# ============================================================
+# helm repo add bitnami https://charts.bitnami.com/bitnami
+# helm install redis bitnami/redis \
+#   -n redis \
+#   --create-namespace \
+#   -f redis-sentinel-values.yaml \
+#   --set auth.password=$(openssl rand -base64 32)
+#
+# 업그레이드:
+# helm upgrade redis bitnami/redis -n redis -f redis-sentinel-values.yaml
+#
+# 접속:
+# Master (쓰기): redis-master.redis.svc.cluster.local:6379
+# Replica (읽기): redis-replicas.redis.svc.cluster.local:6379
+# Sentinel: redis-node-{0,1,2}.redis.svc.cluster.local:26379
