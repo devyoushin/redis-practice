@@ -20,7 +20,7 @@ redis-practice/
 ├── docs/                              # 지식 문서 (카테고리별 분류)
 │   ├── data-structures/     (4개)    # 자료구조별 사용법 및 패턴
 │   ├── operations/          (3개)    # Cluster/Sentinel 운영, 영속성
-│   ├── performance/         (3개)    # 메모리, 연결 풀, Slow Log
+│   ├── performance/         (4개)    # 메모리, 연결 풀, Slow Log, 네트워크 대역폭
 │   ├── security/            (2개)    # 인증/인가, TLS
 │   └── observability/       (2개)    # 지표 수집, Grafana
 │
@@ -117,6 +117,7 @@ docs/{카테고리}/{주제}.md
 | `memory-management.md` | 메모리 관리 및 Eviction |
 | `connection-pooling.md` | 연결 풀 최적화 |
 | `slow-log-analysis.md` | Slow Log 분석 |
+| `network-bandwidth-scaling.md` | 네트워크 대역폭 병목과 스케일링 안티패턴 |
 
 ### docs/security/
 | 파일 | 주제 |
