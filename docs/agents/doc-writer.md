@@ -25,6 +25,6 @@ Redis 지식 문서를 작성하는 전문 에이전트입니다.
 ## 사용 예시
 
 ```
-Redis Cluster 노드 추가 절차에 대한 문서를 docs/guides/operations/cluster-node-add.md에 작성해줘.
+Redis Cluster 노드 추가 절차에 대한 문서를 docs/operations/cluster-node-add.md에 작성해줘.
 운영 환경 기준, Bitnami Helm Chart, EKS 환경 고려.
 ```

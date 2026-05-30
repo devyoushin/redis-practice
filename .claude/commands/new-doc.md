@@ -20,7 +20,7 @@
 
 ## 실행 내용
 
-`$ARGUMENTS`를 파싱하여 `docs/guides/<카테고리>/<주제>.md` 파일을 `docs/templates/service-doc.md` 형식으로 생성합니다.
+`$ARGUMENTS`를 파싱하여 `docs/<카테고리>/<주제>.md` 파일을 `docs/templates/service-doc.md` 형식으로 생성합니다.
 
 다음 규칙을 따릅니다:
 1. `docs/rules/doc-writing.md` — 5개 섹션(개요/설명/트러블슈팅/모니터링/TIP) 필수

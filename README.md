@@ -4,7 +4,7 @@ EKS + Bitnami Helm Chart 기준으로 Redis 7.x Cluster/Sentinel 운영 지식�
 
 ## 빠른 시작
 
-- 처음 볼 문서: `docs/guides/data-structures/string-hash.md`
+- 처음 볼 문서: `docs/data-structures/string-hash.md`
 - 전체 흐름: 자료구조 -> 운영 -> 성능 -> 보안 -> 관측
 - AI 작업 지침: `CLAUDE.md`
 
@@ -15,7 +15,12 @@ redis-practice/
 ├── README.md
 ├── CLAUDE.md
 ├── docs/
-│   ├── guides/     # 학습 문서
+│   ├── README.md
+│   ├── data-structures/
+│   ├── operations/
+│   ├── performance/
+│   ├── security/
+│   ├── observability/
 │   ├── rules/      # 작성/운영 규칙
 │   ├── templates/  # 재사용 템플릿
 │   └── agents/     # Claude 에이전트 프롬프트
@@ -27,11 +32,11 @@ redis-practice/
 
 | 단계 | 위치 |
 |------|------|
-| 자료구조 | `docs/guides/data-structures/` |
-| 운영 | `docs/guides/operations/` |
-| 성능 | `docs/guides/performance/` |
-| 보안 | `docs/guides/security/` |
-| 관측 | `docs/guides/observability/` |
+| 자료구조 | `docs/data-structures/` |
+| 운영 | `docs/operations/` |
+| 성능 | `docs/performance/` |
+| 보안 | `docs/security/` |
+| 관측 | `docs/observability/` |
 
 ## 환경
 

@@ -11,8 +11,8 @@ Redis 지식 문서의 품질을 검토합니다.
 ## 예시
 
 ```
-/review-doc docs/guides/performance/memory-management.md
-/review-doc docs/guides/operations/redis-cluster.md
+/review-doc docs/performance/memory-management.md
+/review-doc docs/operations/redis-cluster.md
 ```
 
 ## 검토 항목

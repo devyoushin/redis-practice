@@ -18,12 +18,12 @@ Redis 운영 경험 기반의 개인 지식 베이스입니다. 문서 추가/�
 ```
 redis-practice/
 ├── docs/
-│   ├── guides/                         # 지식 문서
-│   │   ├── data-structures/            # 자료구조별 사용법 및 패턴
-│   │   ├── operations/                 # Cluster/Sentinel 운영, 영속성
-│   │   ├── performance/                # 메모리, 연결 풀, Slow Log, 네트워크 대역폭
-│   │   ├── security/                   # 인증/인가, TLS
-│   │   └── observability/              # 지표 수집, Grafana
+│   ├── README.md                       # 문서 구조 안내
+│   ├── data-structures/                # 자료구조별 사용법 및 패턴
+│   ├── operations/                     # Cluster/Sentinel 운영, 영속성
+│   ├── performance/                    # 메모리, 연결 풀, Slow Log, 네트워크 대역폭
+│   ├── security/                       # 인증/인가, TLS
+│   ├── observability/                  # 지표 수집, Grafana
 │   ├── templates/                      # 재사용 문서 템플릿
 │   ├── rules/                          # Claude 작성 규칙
 │   └── agents/                         # Claude 전문 에이전트
@@ -47,8 +47,8 @@ redis-practice/
 |--------|--------|------|
 | `/new-doc` | `/new-doc performance pipeline-optimization` | 신규 문서 스캐폴딩 |
 | `/new-runbook` | `/new-runbook operations failover-recovery` | 운영 Runbook 생성 |
-| `/review-doc` | `/review-doc docs/guides/security/auth-acl.md` | 문서 품질 검토 |
-| `/add-troubleshooting` | `/add-troubleshooting docs/guides/operations/redis-cluster.md <증상>` | 트러블슈팅 추가 |
+| `/review-doc` | `/review-doc docs/security/auth-acl.md` | 문서 품질 검토 |
+| `/add-troubleshooting` | `/add-troubleshooting docs/operations/redis-cluster.md <증상>` | 트러블슈팅 추가 |
 | `/search-kb` | `/search-kb eviction memory` | 지식 베이스 키워드 검색 |
 
 ---
@@ -56,12 +56,12 @@ redis-practice/
 ## 파일 네이밍 규칙
 
 ```
-docs/guides/{카테고리}/{주제}.md
+docs/{카테고리}/{주제}.md
 ```
 
 - 카테고리: `data-structures`, `operations`, `performance`, `security`, `observability`
 - 주제: 소문자 영어, 하이픈 구분
-- 예시: `docs/guides/performance/pipeline-optimization.md`, `docs/guides/operations/backup-restore.md`
+- 예시: `docs/performance/pipeline-optimization.md`, `docs/operations/backup-restore.md`
 
 ---
 
@@ -79,7 +79,7 @@ docs/guides/{카테고리}/{주제}.md
 
 ## 카테고리별 문서 목록
 
-### docs/guides/data-structures/
+### docs/data-structures/
 | 파일 | 주제 |
 |------|------|
 | `string-hash.md` | String, Hash 자료구조 |
@@ -87,14 +87,14 @@ docs/guides/{카테고리}/{주제}.md
 | `sorted-set-stream.md` | Sorted Set, Stream 자료구조 |
 | `data-type-selection.md` | 자료구조 선택 가이드 |
 
-### docs/guides/operations/
+### docs/operations/
 | 파일 | 주제 |
 |------|------|
 | `redis-cluster.md` | Redis Cluster 구성 및 운영 |
 | `redis-sentinel.md` | Redis Sentinel 고가용성 |
 | `persistence.md` | RDB/AOF 영속성 |
 
-### docs/guides/performance/
+### docs/performance/
 | 파일 | 주제 |
 |------|------|
 | `memory-management.md` | 메모리 관리 및 Eviction |
@@ -102,13 +102,13 @@ docs/guides/{카테고리}/{주제}.md
 | `slow-log-analysis.md` | Slow Log 분석 |
 | `network-bandwidth-scaling.md` | 네트워크 대역폭 병목과 스케일링 안티패턴 |
 
-### docs/guides/security/
+### docs/security/
 | 파일 | 주제 |
 |------|------|
 | `auth-acl.md` | AUTH 인증 및 ACL |
 | `tls-encryption.md` | TLS 암호화 |
 
-### docs/guides/observability/
+### docs/observability/
 | 파일 | 주제 |
 |------|------|
 | `redis-metrics.md` | Prometheus 지표 |
@@ -118,7 +118,7 @@ docs/guides/{카테고리}/{주제}.md
 
 ## 추가 예정 주제 (백로그)
 
-- `docs/guides/performance/pipeline-optimization.md` — Pipeline, MULTI/EXEC, Lua Script
-- `docs/guides/operations/backup-restore.md` — RDB/AOF 백업 및 복구 절차
-- `docs/guides/data-structures/pub-sub.md` — Pub/Sub 패턴
-- `docs/guides/operations/redis-upgrade.md` — Redis 버전 업그레이드 전략
+- `docs/performance/pipeline-optimization.md` — Pipeline, MULTI/EXEC, Lua Script
+- `docs/operations/backup-restore.md` — RDB/AOF 백업 및 복구 절차
+- `docs/data-structures/pub-sub.md` — Pub/Sub 패턴
+- `docs/operations/redis-upgrade.md` — Redis 버전 업그레이드 전략
