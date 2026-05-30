@@ -11,8 +11,8 @@
 ## 예시
 
 ```
-/add-troubleshooting docs/performance/memory-management.md "OOM killer가 Redis 프로세스를 종료시킴"
-/add-troubleshooting docs/operations/redis-cluster.md "CLUSTERDOWN 오류로 쓰기 실패"
+/add-troubleshooting docs/guides/performance/memory-management.md "OOM killer가 Redis 프로세스를 종료시킴"
+/add-troubleshooting docs/guides/operations/redis-cluster.md "CLUSTERDOWN 오류로 쓰기 실패"
 ```
 
 ## 실행 내용

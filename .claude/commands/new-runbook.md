@@ -18,7 +18,7 @@ Redis 운영 Runbook을 생성합니다.
 
 ## 실행 내용
 
-`$ARGUMENTS`를 파싱하여 `docs/<카테고리>/<주제>-runbook.md` 파일을 `templates/runbook.md` 형식으로 생성합니다.
+`$ARGUMENTS`를 파싱하여 `docs/guides/<카테고리>/<주제>-runbook.md` 파일을 `docs/templates/runbook.md` 형식으로 생성합니다.
 
 Runbook 필수 포함 항목:
 1. **사전 조건**: 실행 전 확인 사항, 필요 권한

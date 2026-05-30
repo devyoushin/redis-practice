@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "echo '[redis-practice] 파일 저장됨: 문서가 rules/doc-writing.md 스타일 가이드를 따르는지 확인하세요.'"
+            "command": "echo '[redis-practice] 파일 저장됨: 문서가 docs/rules/doc-writing.md 스타일 가이드를 따르는지 확인하세요.'"
           }
         ]
       }

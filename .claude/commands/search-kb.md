@@ -29,9 +29,9 @@ Redis 지식 베이스에서 키워드로 관련 문서를 검색합니다.
 ```
 ## 검색 결과: "<키워드>"
 
-### 1. docs/performance/memory-management.md
+### 1. docs/guides/performance/memory-management.md
 > 섹션 2.1 핵심 개념 — Eviction Policy 설명...
 
-### 2. docs/operations/redis-cluster.md
+### 2. docs/guides/operations/redis-cluster.md
 > 섹션 3.2 트러블슈팅 — Cluster Failover 절차...
 ```
