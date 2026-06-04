@@ -4,9 +4,9 @@ Redis 운영 경험 기반의 개인 지식 베이스입니다. 문서 추가/�
 
 ## 프로젝트 설정
 
-- **환경**: EKS
+- **환경**: VM/systemd, Docker Compose, Kubernetes
 - **Redis 버전**: 7.x
-- **배포 방식**: Bitnami Helm Chart
+- **배포 방식**: systemd 우선, Docker Compose는 개발/검증, Helm은 Kubernetes 운영 역량이 있을 때만
 - **Cluster 모드**: Redis Cluster (샤딩) / Redis Sentinel (HA)
 - **네임스페이스**: `redis`
 - **접속 엔드포인트**: `redis-master.redis.svc.cluster.local:6379`
@@ -19,6 +19,7 @@ Redis 운영 경험 기반의 개인 지식 베이스입니다. 문서 추가/�
 redis-practice/
 ├── docs/
 │   ├── README.md                       # 문서 구조 안내
+│   ├── install/                        # 설치 방식 선택 및 절차
 │   ├── data-structures/                # 자료구조별 사용법 및 패턴
 │   ├── operations/                     # Cluster/Sentinel 운영, 영속성
 │   ├── performance/                    # 메모리, 연결 풀, Slow Log, 네트워크 대역폭
@@ -28,9 +29,10 @@ redis-practice/
 │   ├── rules/                          # Claude 작성 규칙
 │   └── agents/                         # Claude 전문 에이전트
 ├── ops/
-│   └── config/                         # Redis 설정 예제
-├── CLAUDE.md                           # Claude 작업 기준
-├── AGENTS.md                           # Codex 작업 기준
+│   ├── config/                         # Redis 설정 예제
+│   └── install/                        # systemd, Docker Compose 예제
+├── CLAUDE.md                           # Claude/Codex 공통 작업 기준
+├── AGENTS.md -> CLAUDE.md              # Codex 작업 기준 링크
 └── .gitignore                          # 로컬/민감 파일 제외 규칙
 ```
 
@@ -56,7 +58,7 @@ redis-practice/
 docs/{카테고리}/{주제}.md
 ```
 
-- 카테고리: `data-structures`, `operations`, `performance`, `security`, `observability`
+- 카테고리: `install`, `data-structures`, `operations`, `performance`, `security`, `observability`
 - 주제: 소문자 영어, 하이픈 구분
 - 예시: `docs/performance/pipeline-optimization.md`, `docs/operations/backup-restore.md`
 
@@ -75,6 +77,15 @@ docs/{카테고리}/{주제}.md
 ---
 
 ## 카테고리별 문서 목록
+
+### docs/install/
+| 파일 | 주제 |
+|------|------|
+| `README.md` | Redis 설치 방식 선택 기준 |
+| `systemd.md` | systemd 기반 운영 설치 |
+| `docker-compose.md` | Docker Compose 기반 개발/검증 설치 |
+| `package-tar.md` | RPM/DEB/tar/source 설치 |
+| `helm-kubernetes.md` | Helm/Kubernetes 배포 판단 기준 |
 
 ### docs/data-structures/
 | 파일 | 주제 |

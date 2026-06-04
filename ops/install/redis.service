@@ -1,0 +1,23 @@
+[Unit]
+Description=Redis in-memory data store
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=notify
+User=redis
+Group=redis
+ExecStart=/usr/local/bin/redis-server /etc/redis/redis.conf --supervised systemd --daemonize no
+ExecStop=/bin/kill -s TERM $MAINPID
+TimeoutStopSec=30
+Restart=always
+RestartSec=5
+LimitNOFILE=65535
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+ReadWritePaths=/var/lib/redis /var/log/redis
+
+[Install]
+WantedBy=multi-user.target

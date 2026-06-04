@@ -4,6 +4,7 @@ Redis 문서는 학습 문서, 규칙, 템플릿, 에이전트 프롬프트를 �
 
 | 폴더 | 내용 |
 |------|------|
+| `install/` | systemd, Docker Compose, RPM/DEB/tar, Helm/Kubernetes 설치 방식 |
 | `data-structures/` | 자료구조와 타입 선택 |
 | `operations/` | Cluster, Sentinel, 영속성 |
 | `performance/` | 메모리, 연결 풀, Slow Log, 네트워크 병목 |
@@ -13,4 +14,4 @@ Redis 문서는 학습 문서, 규칙, 템플릿, 에이전트 프롬프트를 �
 | `templates/` | 서비스 문서, 런북, 장애 보고서 템플릿 |
 | `agents/` | Claude 에이전트 프롬프트 |
 
-처음 읽을 문서는 `data-structures/string-hash.md`입니다.
+처음 읽을 문서는 `install/README.md`입니다. Redis 자료구조부터 학습하려면 `data-structures/string-hash.md`부터 읽습니다.
