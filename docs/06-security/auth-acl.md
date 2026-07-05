@@ -271,4 +271,4 @@ redis-cli -a <ADMIN_PASSWORD> ACL LOG RESET
 - Redis 7.0+에서 ACL `%R~pattern` (읽기 전용 키 패턴), `%W~pattern` (쓰기 전용 키 패턴) 지원
 - `ACL WHOAMI`로 현재 인증된 사용자 확인
 - Bitnami Redis는 기본적으로 `requirepass` 방식 — ACL 사용 시 별도 설정 필요
-- 참고: [Redis ACL](https://redis.io/docs/management/security/acl/)
+- 참고: [Redis ACL](https://redis.io/docs/management/06-security/acl/)

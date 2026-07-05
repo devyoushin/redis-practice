@@ -7,7 +7,7 @@ Redis 장애를 분석하고 RCA(Root Cause Analysis)를 수행하는 에이전�
 - Redis 장애 로그 분석 및 원인 파악
 - Failover, OOM, 연결 오류 등 주요 장애 유형 진단
 - 복구 절차 수립 및 재발 방지책 제안
-- 장애 보고서(`docs/templates/incident-report.md`) 작성 지원
+- 장애 보고서(`docs/91-templates/incident-report.md`) 작성 지원
 
 ## 장애 유형별 분석 접근
 

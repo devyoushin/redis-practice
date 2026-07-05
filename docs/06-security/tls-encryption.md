@@ -304,4 +304,4 @@ redis-cli --tls --cacert /tls/ca.crt \
 - cert-manager `Certificate` 리소스로 Redis TLS 인증서 자동 갱신 구성 가능
 - Redis Sentinel TLS 설정 시 Sentinel 포트(26379)도 TLS 적용 필요
 - `tls-protocols "TLSv1.3"` 으로 TLS 1.3만 허용하면 보안 강화 (클라이언트 호환성 확인 필요)
-- 참고: [Redis TLS Support](https://redis.io/docs/management/security/encryption/)
+- 참고: [Redis TLS Support](https://redis.io/docs/management/06-security/encryption/)

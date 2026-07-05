@@ -12,7 +12,7 @@
 | 로그 디렉터리 | `/var/log/redis` |
 | systemd unit | `/etc/systemd/system/redis.service` |
 
-`ops/install/redis.service`는 source 설치 기준으로 `/usr/local/bin/redis-server`를 사용합니다. RPM/DEB 패키지 설치를 사용한다면 배포판의 기본 unit을 쓰거나 `ExecStart` 경로를 `/usr/bin/redis-server`로 조정합니다.
+`ops/01-installation/redis.service`는 source 설치 기준으로 `/usr/local/bin/redis-server`를 사용합니다. RPM/DEB 패키지 설치를 사용한다면 배포판의 기본 unit을 쓰거나 `ExecStart` 경로를 `/usr/bin/redis-server`로 조정합니다.
 
 ## 설치 흐름
 
@@ -31,10 +31,10 @@ sudo chown redis:redis /etc/redis/redis.conf
 sudo chmod 640 /etc/redis/redis.conf
 ```
 
-`ops/install/redis.service`를 systemd unit으로 등록합니다.
+`ops/01-installation/redis.service`를 systemd unit으로 등록합니다.
 
 ```bash
-sudo cp ops/install/redis.service /etc/systemd/system/redis.service
+sudo cp ops/01-installation/redis.service /etc/systemd/system/redis.service
 sudo systemctl daemon-reload
 sudo systemctl enable --now redis
 ```

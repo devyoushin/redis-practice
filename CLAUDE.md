@@ -46,8 +46,8 @@ redis-practice/
 |--------|--------|------|
 | `/new-doc` | `/new-doc performance pipeline-optimization` | 신규 문서 스캐폴딩 |
 | `/new-runbook` | `/new-runbook operations failover-recovery` | 운영 Runbook 생성 |
-| `/review-doc` | `/review-doc docs/security/auth-acl.md` | 문서 품질 검토 |
-| `/add-troubleshooting` | `/add-troubleshooting docs/operations/redis-cluster.md <증상>` | 트러블슈팅 추가 |
+| `/review-doc` | `/review-doc docs/06-security/auth-acl.md` | 문서 품질 검토 |
+| `/add-troubleshooting` | `/add-troubleshooting docs/03-operations/redis-cluster.md <증상>` | 트러블슈팅 추가 |
 | `/search-kb` | `/search-kb eviction memory` | 지식 베이스 키워드 검색 |
 
 ---
@@ -60,7 +60,7 @@ docs/{카테고리}/{주제}.md
 
 - 카테고리: `install`, `data-structures`, `operations`, `performance`, `security`, `observability`
 - 주제: 소문자 영어, 하이픈 구분
-- 예시: `docs/performance/pipeline-optimization.md`, `docs/operations/backup-restore.md`
+- 예시: `docs/04-performance/pipeline-optimization.md`, `docs/03-operations/backup-restore.md`
 
 ---
 
@@ -72,13 +72,13 @@ docs/{카테고리}/{주제}.md
 4. **한국어 기술 문서** — 주요 개념은 영어 원문 병기
 5. **모니터링 필수** — 모든 문서에 Prometheus 지표 또는 진단 명령어 포함
 
-세부 규칙은 `docs/rules/` 디렉토리를 참조합니다.
+세부 규칙은 `docs/90-standards/` 디렉토리를 참조합니다.
 
 ---
 
 ## 카테고리별 문서 목록
 
-### docs/install/
+### docs/01-installation/
 | 파일 | 주제 |
 |------|------|
 | `README.md` | Redis 설치 방식 선택 기준 |
@@ -87,7 +87,7 @@ docs/{카테고리}/{주제}.md
 | `package-tar.md` | RPM/DEB/tar/source 설치 |
 | `helm-kubernetes.md` | Helm/Kubernetes 배포 판단 기준 |
 
-### docs/data-structures/
+### docs/02-data-structures/
 | 파일 | 주제 |
 |------|------|
 | `string-hash.md` | String, Hash 자료구조 |
@@ -95,14 +95,14 @@ docs/{카테고리}/{주제}.md
 | `sorted-set-stream.md` | Sorted Set, Stream 자료구조 |
 | `data-type-selection.md` | 자료구조 선택 가이드 |
 
-### docs/operations/
+### docs/03-operations/
 | 파일 | 주제 |
 |------|------|
 | `redis-cluster.md` | Redis Cluster 구성 및 운영 |
 | `redis-sentinel.md` | Redis Sentinel 고가용성 |
 | `persistence.md` | RDB/AOF 영속성 |
 
-### docs/performance/
+### docs/04-performance/
 | 파일 | 주제 |
 |------|------|
 | `memory-management.md` | 메모리 관리 및 Eviction |
@@ -110,13 +110,13 @@ docs/{카테고리}/{주제}.md
 | `slow-log-analysis.md` | Slow Log 분석 |
 | `network-bandwidth-scaling.md` | 네트워크 대역폭 병목과 스케일링 안티패턴 |
 
-### docs/security/
+### docs/06-security/
 | 파일 | 주제 |
 |------|------|
 | `auth-acl.md` | AUTH 인증 및 ACL |
 | `tls-encryption.md` | TLS 암호화 |
 
-### docs/observability/
+### docs/05-observability/
 | 파일 | 주제 |
 |------|------|
 | `redis-metrics.md` | Prometheus 지표 |
@@ -126,7 +126,7 @@ docs/{카테고리}/{주제}.md
 
 ## 추가 예정 주제 (백로그)
 
-- `docs/performance/pipeline-optimization.md` — Pipeline, MULTI/EXEC, Lua Script
-- `docs/operations/backup-restore.md` — RDB/AOF 백업 및 복구 절차
-- `docs/data-structures/pub-sub.md` — Pub/Sub 패턴
-- `docs/operations/redis-upgrade.md` — Redis 버전 업그레이드 전략
+- `docs/04-performance/pipeline-optimization.md` — Pipeline, MULTI/EXEC, Lua Script
+- `docs/03-operations/backup-restore.md` — RDB/AOF 백업 및 복구 절차
+- `docs/02-data-structures/pub-sub.md` — Pub/Sub 패턴
+- `docs/03-operations/redis-upgrade.md` — Redis 버전 업그레이드 전략

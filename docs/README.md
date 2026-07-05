@@ -1,17 +1,15 @@
-# Redis Docs
+# redis-practice 문서
 
-Redis 문서는 학습 문서, 규칙, 템플릿, 에이전트 프롬프트를 함께 관리합니다.
+이 디렉토리는 주제별 번호 체계로 문서를 정리합니다. 앞 번호는 학습과 운영 흐름을 나타내며, 90번대는 저장소 관리용 문서입니다.
 
-| 폴더 | 내용 |
-|------|------|
-| `install/` | systemd, Docker Compose, RPM/DEB/tar, Helm/Kubernetes 설치 방식 |
-| `data-structures/` | 자료구조와 타입 선택 |
-| `operations/` | Cluster, Sentinel, 영속성 |
-| `performance/` | 메모리, 연결 풀, Slow Log, 네트워크 병목 |
-| `security/` | AUTH, ACL, TLS |
-| `observability/` | Redis Exporter, Prometheus 지표 |
-| `rules/` | 문서 작성 및 운영 규칙 |
-| `templates/` | 서비스 문서, 런북, 장애 보고서 템플릿 |
-| `agents/` | Claude 에이전트 프롬프트 |
+## 문서 구조
 
-처음 읽을 문서는 `install/README.md`입니다. Redis 자료구조부터 학습하려면 `data-structures/string-hash.md`부터 읽습니다.
+- [01-installation](./01-installation/): Redis 설치 - Redis 설치와 실행 환경 구성 문서를 모읍니다.
+- [02-data-structures](./02-data-structures/): Redis 자료구조 - 문자열, Hash, List, Set, Stream 등 자료구조 문서를 모읍니다.
+- [03-operations](./03-operations/): Redis 운영 - Persistence, Sentinel, Cluster 운영 문서를 모읍니다.
+- [04-performance](./04-performance/): 성능 최적화 - 메모리, 네트워크, 커넥션, Slow Log 분석 문서를 모읍니다.
+- [05-observability](./05-observability/): 관측성과 모니터링 - Redis 지표와 exporter 운영 문서를 모읍니다.
+- [06-security](./06-security/): 보안 - 인증, ACL, TLS 문서를 모읍니다.
+- [90-standards](./90-standards/): 문서 작성 표준 - 저장소 문서 작성 규칙과 운영 기준을 관리합니다.
+- [91-templates](./91-templates/): 문서 템플릿 - 반복해서 사용하는 문서 템플릿을 관리합니다.
+- [99-agents](./99-agents/): AI 에이전트 가이드 - Redis 분석과 문서화에 활용할 에이전트 역할 정의를 관리합니다.
